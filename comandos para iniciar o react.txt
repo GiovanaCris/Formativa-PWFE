@@ -1,0 +1,10 @@
+npm create vite@latest
+colocar o nome que quero p projeto e selecionar React dps e dps selecionar o JavaScript
+
+- cd projrto_criado
+- npm install
+- npm run dev
+
+- vai no camnho da pasta 
+- cmd
+- code . (abre o projeto estruturado)
