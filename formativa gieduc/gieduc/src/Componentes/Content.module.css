@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 90vh;
+    background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /*Passar imagem no css*/
+    background-position: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+}
+
