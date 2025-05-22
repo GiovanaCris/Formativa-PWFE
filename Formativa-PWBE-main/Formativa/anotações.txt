@@ -1,0 +1,2 @@
+Pip freeze: pip freeze -l > requeriments.txt
+Baixar os arquivos do freeze: pip install -r requeriments.txt
