@@ -1,4 +1,4 @@
-import { Incial } from "../../Paginas/Inicial";
+import { Incial } from "./Paginas/Inicial";
 
 function App() {
 
