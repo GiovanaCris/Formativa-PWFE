@@ -3,6 +3,7 @@ import ambiente from '../assets/ambiente.png';
 import disciplina from '../assets/disciplina.png';
 import professor from '../assets/professor.png'; 
 import gestor from '../assets/gestor.png';
+import { Link } from 'react-router-dom';
 
 export function Menu(){
     return(
@@ -11,8 +12,10 @@ export function Menu(){
                 <tbody>
                     <tr>
                         <td>
-                            <img src={disciplina}/>
-                            <label alt='Disciplinas do professor'>Disciplinas</label>
+                            <Link to='discprofessor'>
+                                <img src={disciplina}/>
+                                <label alt='Disciplinas do professor'>Disciplinas</label>
+                            </Link>
                         </td>
                         <td>
                             <img src={ambiente}/>

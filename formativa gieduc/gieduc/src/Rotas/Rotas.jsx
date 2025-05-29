@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom';
-import { Login } from '../Paginas/Login'; //  ../
+import { Login } from '../Paginas/Login'; 
 import { Inicial } from '../Paginas/Inicial';
 import { Menu } from '../Componentes/Menu';
 
@@ -7,8 +7,8 @@ import { Menu } from '../Componentes/Menu';
 export function Rotas(){
     return(
         <Routes>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/inicial' element={<Inicial/>}> 
+            <Route path='/' element={<Inicial/>}/>
+            <Route path='/login' element={<Login/>}> 
                 <Route index element={<Menu/>}/>
             </Route>
         </Routes>

@@ -15,7 +15,7 @@ const schemaLogin = z.object({
 });
  
 export function Login() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); //é como se fosse um href para executar sem interação necessariamente do usuário, utilizo quando não preciso de um link pois não terá retorno do usuário
  
     const {
         register,
@@ -28,7 +28,7 @@ export function Login() {
     async function obterDadosFormulario(data) {
         console.log(`Dados: ${data}`)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/token/', {
+            const response = await axios.post('http://127.0.0.1:8000/api/login/', {
                 username: data.username,
                 password: data.password
             });
@@ -42,7 +42,7 @@ export function Login() {
             localStorage.setItem('username', user.username);
  
             console.log('Login bem-sucedido!');          
-            navigate('/inicial');
+            navigate('/inicial'); //após logar vou encaminhar para a página inicial
          
  
         } catch (error) {

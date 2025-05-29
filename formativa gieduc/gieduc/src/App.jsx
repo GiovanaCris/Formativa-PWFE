@@ -1,10 +1,11 @@
-import { Incial } from "./Paginas/Inicial";
-
+import { BrowserRouter } from 'react-router-dom';
+import { Rotas } from './Rotas/Rotas';
 function App() {
-
-  return (
-      <Incial/>
-  )
+    return (
+        <BrowserRouter>
+            <Rotas />
+        </BrowserRouter>
+    );
 }
-
-export default App
+ 
+export default App;

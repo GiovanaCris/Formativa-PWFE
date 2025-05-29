@@ -147,6 +147,10 @@ class SalaretrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
 #username: admin
 #password: 12345
 
+#user: nicolas
+#senha: admin
+
+
 #GESTOR
 #username: GESTOR
 #password: giovana10

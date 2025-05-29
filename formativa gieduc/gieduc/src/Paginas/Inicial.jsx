@@ -2,7 +2,7 @@ import { Header } from "../Componentes/Header";
 import { Content } from "../Componentes/Content";
 import { Outlet } from "react-router-dom"
 
-export function Incial(){
+export function Inicial(){
     return(
         <>
         <Header/>
@@ -11,3 +11,4 @@ export function Incial(){
         </>
     )
 }
+

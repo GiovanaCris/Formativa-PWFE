@@ -7,8 +7,8 @@ export function Content(){
         <><main className={estilos.container}>
             <img className={estilos.decoracao1} src={decoracao1} />
             <h1 className={estilos.contenth1}><strong>SEJA BEM VINDO</strong><br></br>Ao GiEduc!</h1>
-            <a href='#'>
-                <button className={estilos.clickhere}>VAMOS LÁ</button>
+            <a href='/login'>
+                <button type="submit" className={estilos.clickhere}>VAMOS LÁ</button>
             </a>
         </main>
         <footer className={estilos.footer}>
