@@ -1,4 +1,3 @@
-import estilos from './Menu.module.css';
 import ambiente from '../assets/ambiente.png';
 import disciplina from '../assets/disciplinas.png';
 import professor from '../assets/professor.png';

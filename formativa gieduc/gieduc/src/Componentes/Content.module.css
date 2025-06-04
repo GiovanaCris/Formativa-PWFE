@@ -1,55 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat&display=swap');
 
-.container{
-    height: 90vh;
-    /*background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); Passar imagem no css*/
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 0;
-}
-
-.decoracao1{
-    margin-top: -26px;
-    margin-left: 80%;
-    position: absolute;
-    z-index: 1;
-}
-
-.contenth1{
-    padding-top: 17%;
-    margin-left: 10%;
-    font-family: 'Inter';
-    font-weight: 400;
-}
-
-.contenth1 strong{
-    font-family: 'Inter';
-    background: linear-gradient(to right, #122651, #889FCF);
-    background-clip: text;
-    color: transparent;
-    font-size: 45px;
-    font-weight: 750;
-}
-
-.clickhere{
-    padding: 25px 90px;
-    background-color: #122651;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.5s ease;
-    display: flex;
-}
-
-a{
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    margin-top: 6%;
-}
+/* .decoracao2{
+    
+} */
 
 /* .decoracao2{
     z-index: 2;
