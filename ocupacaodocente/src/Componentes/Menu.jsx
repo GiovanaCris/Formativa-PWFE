@@ -4,15 +4,19 @@ import disciplina from '../assets/disciplina.png';
 import professor from '../assets/professor.png'; 
 import gestor from '../assets/gestor.png';
 import { Link } from 'react-router-dom';
+import { Disciplina } from '../Paginas/Disciplina';
+import { DisplinaProfessor } from '../Paginas/DisciplinasProfessor';
 
 export function Menu(){
+    const tipo = localStorage.getItem('tipo');
+    const linkDisciplina = tipo === 'P' ? 'discprofessor' : 'disciplina' //if else
     return(
         <div className={estilos.conteiner}>
             <table>
                 <tbody>
                     <tr>
                         <td>
-                            <Link to='discprofessor'>
+                            <Link to={linkDisciplina}>
                                 <img src={disciplina}/>
                                 <label alt='Disciplinas do professor'>Disciplinas</label>
                             </Link>

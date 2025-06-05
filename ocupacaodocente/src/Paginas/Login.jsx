@@ -41,7 +41,8 @@ export function Login() {
             localStorage.setItem('user_id', user.id);
             localStorage.setItem('username', user.username);
  
-            console.log('Login bem-sucedido!');          
+            console.log('Login bem-sucedido!');  
+            console.log(response.data)        
             navigate('/inicial'); //após logar vou encaminhar para a página inicial
          
  
