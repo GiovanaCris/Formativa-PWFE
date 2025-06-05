@@ -2,29 +2,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 80vh;
 }
+
 
 .loginForm{
     width: 100%;
     max-width: 500px;
     height: auto;
-    background-color:azure;
-    padding: 30px;
-    border-radius: 15px;
+    background-color: #8891A6;
+    padding: 50px;
+    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: flex;
+    align-items: center;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
+    gap: 20px;
     box-sizing: border-box;
+    border: 1px solid #122651;
 }
 
 .titulo{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     text-align: center;
-    color: rgba(222,115,14);
-    margin-bottom: 25px;
+    color: #122651;
+    font-weight: bold;
+    margin-bottom: 60px;
 }
 
 .label{
@@ -36,13 +42,14 @@
 }
 
 .inputField{
-    padding: 10px;
+    padding: 18px 15px;
     font-size: 16px;
     color: rgb(50,50,50);
-    width: 100%;
+    width: 70%;
     border: 1px, solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
+    background-color: #ECECEC;
     margin: 5px;
 }
 
@@ -51,22 +58,22 @@
 }
 
 .submitButton{
-    width: 100%;
+    width: 30%;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(251,152,60,0);
-    font-size: 16px;
+    background-color: #122651;
+    font-size: 14px;
     font-weight: bold;
-    padding: 12px;
+    padding: 15px;
     margin-top: 30px;
-    border-radius: 8px;
+    border-radius: 50px;
     border: none;
-    color: #ccc;
+    color: #FDFDFD;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.submitButton{
-    background-color: rgba(222,155,14,0.9);
+.submitButton:hover{
+    background-color: #1D273D;
 }
 
 .error{

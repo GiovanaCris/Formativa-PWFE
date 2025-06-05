@@ -52,28 +52,34 @@ export function Login() {
     }
  
     return (
-        <div className={estilos.conteiner}>
+        <div className={estilos.container}>
+            <h2 className={estilos.titulo}>FAÇA SEU LOGIN</h2>
             <form onSubmit={handleSubmit(obterDadosFormulario)} className={estilos.loginForm}>
-                <h2 className={estilos.titulo}>Login</h2>
  
-                <label className={estilos.label}>Usuário:</label>
                 <input
                     {...register('username')}
-                    placeholder='username'
+                    placeholder='Nome de usuário:'
                     className={estilos.inputField}
                 />
                 {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
  
-                <label>Senha: </label>
                 <input
                     {...register('password')}
-                    placeholder='Senha'
+                    placeholder='Digite sua senha:'
+                    type="password"
+                    className={estilos.inputField}
+                />
+                {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
+
+                <input
+                    {...register('password')}
+                    placeholder='Digite sua senha novamente:'
                     type="password"
                     className={estilos.inputField}
                 />
                 {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
  
-                <button type="submit" className={estilos.submitButton}>Entrar</button>
+                <button type="submit" className={estilos.submitButton}>ENTRAR</button>
             </form>
         </div>
     );
