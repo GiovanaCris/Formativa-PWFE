@@ -42,7 +42,7 @@ export function Login() {
             localStorage.setItem('username', user.username);
  
             console.log('Login bem-sucedido!');          
-            navigate('/inicial');
+            navigate('/home');
          
  
         } catch (error) {
