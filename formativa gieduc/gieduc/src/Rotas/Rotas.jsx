@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Inicial } from '../Paginas/Inicial';
 import { Inicio } from '../Paginas/Inicio';
 import { Login } from '../Paginas/Login';
-import { Menu } from '../Componentes/Menu';
+import { MenuNav } from '../Componentes/MenuNav';
 import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
 import { Disciplina } from '../Paginas/Disciplina';
 import { Ambiente } from '../Paginas/Ambiente';
@@ -17,6 +17,7 @@ export function Rotas() {
         <Route path ='login' element={<Login/>}/>
         <Route path='home' element={<Home/>}/>
         <Route path='sobre_nos' element={<SobreNos/>} />
+        <Route path='menu' element={<MenuNav />} />
         <Route path = 'disciplina' element={<Disciplina/>}/>
         <Route path = 'ambiente' element={<Ambiente/>} />
       </Route>

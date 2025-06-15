@@ -2,6 +2,7 @@ import { Menu } from '../Componentes/Menu';
 import estilo from "./Home.module.css";
 import BannerHome from '../assets/BannerHome.jpg';
 import estilos from "./Inicio.module.css";
+import { MenuNav } from '../Componentes/MenuNav';
 
 export function Home() {
     const username = localStorage.getItem("username");
@@ -9,6 +10,7 @@ export function Home() {
         <>
             <div className={estilo.container}>
                 <div className={estilo.content_home}>
+                    <MenuNav />
                     <h1><strong>Olá</strong>, {username}!</h1>
                     <div className={estilo.info_home}>
                         <img className={estilo.imgBanner} src={BannerHome} alt="Banner da Home" />
