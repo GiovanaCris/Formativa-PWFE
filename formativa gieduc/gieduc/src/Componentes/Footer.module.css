@@ -1,5 +1,50 @@
-.container{
+.container {
     background-color: #122651;
-    height: 96px;
+    height: 126px;
     margin-top: 8.3%;
+}
+
+.nome_logo{
+    color: white;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 35px;
+}
+
+.content_footer {
+    display: flex;
+    align-items: center;
+    gap: 300px;
+    height: 100%;
+    padding: 0 8%;
+}
+
+.icones {
+    display: flex;
+    padding: 0 11%;
+    gap: 25px;
+}
+
+.icone {
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    background-color: white;
+    padding: 15px 16px;
+    border-radius: 50%;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.icone:hover{
+    background-color: rgb(193, 193, 193);
+}
+
+.copyright{
+    background: linear-gradient(to right, #122651, #00369C);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    color: white;
 }

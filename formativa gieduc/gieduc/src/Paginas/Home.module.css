@@ -1,0 +1,56 @@
+.content_home h1{
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    padding: 20px 9.5%;
+    font-style: italic;
+    font-weight: 500;
+    color: #122651
+}
+
+.content_home strong{
+    font-style: normal;
+}
+
+.imgBanner{
+    margin-left: 15%;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    width: 70%;
+}
+
+.container h2{
+    display: flex;
+    justify-content: center;
+    color: #122651;
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    margin-bottom: 80px;
+}
+
+.content_objetivo{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 40px;
+    background-color: #12265122;
+    margin: 0 250px;
+}
+
+.content_objetivo h3{
+    font-size: 25px;
+    color: #122651;
+    text-shadow: 0 0 8px #1226516f; 
+}
+
+.container p{
+    width: 40%;
+    font-size: 21px;
+}
+
+.buttonHome{
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}

@@ -1,0 +1,56 @@
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+.quemsomos{
+    display: flex;
+    justify-content: center;
+    gap: 25%;
+    align-items: center;
+    margin-bottom: 180px;
+    background-color: #8891a632;;
+    padding: 25px 0;
+}
+
+.quemsomos img{
+    height: 300px;
+    width: 350px;
+    background-color: #889FCF;
+    padding: 10px 10px;
+}
+
+.quemsomos p{
+    width: 350px;
+    font-size: 19px;
+    font-family: 'Inter', sans-serif;
+    background-color: #8891a632;
+    padding: 20px 20px;
+}
+
+.historia{
+    display: flex;
+    justify-content: center;
+    gap: 25%;
+    align-items: center;
+    background-color: #889fcf29;
+    padding: 25px 0;
+}
+
+.historia img{
+    height: 300px;
+    width: 350px;
+    background-color: #8891A6;
+    padding: 10px 10px;
+}
+
+.historia p{
+    width: 350px;
+    font-size: 19px;
+    font-family: 'Inter', sans-serif;
+    background-color: #8891a632;
+    padding: 20px 20px;
+}

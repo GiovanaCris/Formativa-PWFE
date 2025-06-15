@@ -39,7 +39,7 @@ export function Login() {
             localStorage.setItem('refresh_token', refresh);
             localStorage.setItem('tipo', user.tipo);
             localStorage.setItem('user_id', user.id);
-            localStorage.setItem('username', user.username);
+            localStorage.setItem('username', response.data.username);
  
             console.log('Login bem-sucedido!');          
             navigate('/home');
