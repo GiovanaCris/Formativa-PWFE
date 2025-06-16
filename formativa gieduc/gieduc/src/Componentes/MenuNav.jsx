@@ -20,13 +20,13 @@ export function MenuNav() {
         <nav className={estilo.caixa_menu}>
           <ul>
             <li>
-              <Link to="home" className={estilo.navs}>Home</Link>
+              <Link to="/home" className={estilo.navs}>Home</Link>
             </li>
             <li>
-              <Link to="login" className={estilo.navs}>Login</Link>
+              <Link to="/login" className={estilo.navs}>Login</Link>
             </li>
             <li>
-              <Link to="sobre_nos" className={estilo.navs}>Sobre nós</Link>
+              <Link to="/sobre_nos" className={estilo.navs}>Sobre nós</Link>
             </li>
           </ul>
         </nav>

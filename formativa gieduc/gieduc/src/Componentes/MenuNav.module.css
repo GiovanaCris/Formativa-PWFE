@@ -2,7 +2,7 @@
     position: absolute;     
     top: 100%;            
     left: 190px;             
-    background-color: #d9d9d965;
+    background-color: #122651d9;
     height: 197px;
     margin: 20px 0 0 0;      
     width: 228px;
@@ -21,6 +21,7 @@
 .caixa_menu ul li{
     list-style: none;
     text-decoration: none;
+    margin-left: 10px;
     font-family: 'Inter';
     font-weight: 650;
     line-height: 37px;
@@ -29,14 +30,16 @@
 }
 
 .navs{
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     margin-left: 20px;
 }
 
 .caixa_menu ul li:hover{
-    background-color: #c2c2c2af;
+    /* background-color: #122651cf; */
+    border: solid 1px white;
     width: 163.3px;
+    margin-left: 10px;
     height: 35px;
     border-radius: 10px;
 }
