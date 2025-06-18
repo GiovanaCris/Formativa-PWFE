@@ -1,124 +1,97 @@
-/*Disciplinas do gestor*/
 import axios from 'axios'
-import React, {useState, useEffect} from 'react';
-import { Edit, Trash2, Plus} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import add from '../assets/add.png';
-import edit from '../assets/edit.png';
-import del from '../assets/delete.png';
 import estilos from './Visualizar.module.css';
 
 export function Disciplina() {
     const [disciplinas, setDisciplina] = useState([]);
-    const [professores, setProfessores] = useState([]);
-    console.log("Disciplinas:", disciplinas);
-    console.log("Professores:", professores);
+    const [professores, setProfessores] = useState({});
 
     useEffect(() => {
         const token = localStorage.getItem('access_token')
 
         axios.get('http://127.0.0.1:8000/api/disciplinas/', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })// url aqui da disciplina 
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(response => setDisciplina(response.data))
+        .catch(error => console.error('Erro ao buscar disciplinas', error));
 
-            .then(response => {
-                setDisciplina(response.data);
-            })
-
-            .catch(error => {
-                console.error('error', error);
-
-            });
-
-            //Busca dos professores
         axios.get('http://127.0.0.1:8000/api/usuario/', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-
-            }
+            headers: { 'Authorization': `Bearer ${token}` }
         })
-        .then(response =>{
-            //serve para transformar array de prof em objeto com id
-            const professorporId ={};
+        .then(response => {
+            const profPorId = {};
             response.data.forEach(prof => {
-                professorporId[prof.id] = `${prof.username}`;
+                profPorId[prof.id] = prof.username;
             });
-            setProfessores(professorporId || {});
+            setProfessores(profPorId);
         })
-        .catch(error =>{
-            console.error("Erro o buscar o professor", error); //se der ruim tem que vir mensagem de erro
-        });
-
-    },[]);
+        .catch(error => console.error("Erro ao buscar professores", error));
+    }, []);
 
     function excluirDisciplina(id) {
-    const confirmar = window.confirm('Tem certeza que deseja excluir esta disciplina?');
-    if (!confirmar) return;
+        const confirmar = window.confirm('Tem certeza que deseja excluir esta disciplina?');
+        if (!confirmar) return;
 
-    const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('access_token');
+        axios.delete(`http://127.0.0.1:8000/api/disciplinas/${id}/`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(() => {
+            setDisciplina(prev => prev.filter(d => d.id !== id));
+            alert("Disciplina excluída com sucesso!");
+        })
+        .catch(error => {
+            console.error("Erro ao excluir disciplina", error);
+            alert("Erro ao excluir disciplina.");
+        });
+    }
 
-    axios.delete(`http://127.0.0.1:8000/api/disciplinas/${id}/`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-    })
-    .then(() => {
-        //atualiza a lista automaticamente
-        setDisciplina(prev => prev.filter(d => d.id !== id));
-        alert("Disciplina excluída com sucesso!");
-    })
-    .catch(error => {
-        console.error("Erro ao excluir disciplina", error);
-        alert("Erro ao excluir disciplina.");
-    });
-}
-
-    return(
-              <>
-        {/* esse é o meu cabeçalho */}
-            <main className={estilos.containerM}>
-                <div className={estilos.container}>
-                    <h3 className={estilos.title}>DISCIPLINAS</h3>
-                    {/* adicionar nova disicplina */}
-                    <div className={estilos.topoAcoes}>
-                        <Link to="/adicionardisciplina" className={estilos.botaoAdicionar}>
-                            <img className={estilos.iconeAdd} src={more} alt='Adicionar disciplina' />
-                        </Link>
-                    </div>
-                    {/* tabela de exibir as disciplinas ja cadastradas */}
-                    <div className={estilos.tabelaWrapper}>
-                        <table className={estilos.tabeladados}>
-                            <thead>
-                                <tr className={estilos.cabecalho}>
-                                    <th>Nome</th>
-                                    <th>Curso</th>
-                                    <th>Descrição</th>
-                                    <th>Carga Horária</th>
-                                    <th>Professor</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                                <tbody>
-                                    {disciplinas.map(disciplina => (
-                                        <tr key={disciplina.id}>
-                                        <td>{disciplina.nome}</td>
-                                        <td>{disciplina.curso}</td>
-                                        <td>{disciplina.descricao}</td>
-                                        <td>{disciplina.carga_horaria}</td>
-                                        <td>
-                                            <button onClick={() => excluirDisciplina(disciplina.id)}>
-                                            <Trash2 className="text-red-500 hover:text-red-700 w-5 h-5" />
-                                            </button>
-                                        </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                        </table>
-                    </div>
+    return (
+        <main className={estilos.containerDisc}>
+            <div className={estilos.content_container}>
+                <h3 className={estilos.title}>DISCIPLINAS</h3>
+                <div className={estilos.topoAcoes}>
+                <Link to="/adicionardisciplina" className={estilos.botaoAdicionar}>
+                    <span className={estilos.iconeAdd}>+</span> {/* um "+" maior e destacado */}
+                </Link>
                 </div>
-            </main>
-        </>
-
+                <div className={estilos.tabelaWrapper}>
+                <table className={estilos.tabeladados}>
+                    <thead>
+                    <tr className={estilos.cabecalho}>
+                        <th>Nome</th>
+                        <th>Curso</th>
+                        <th>Descrição</th>
+                        <th>Carga Horária</th>
+                        <th>Professor</th>
+                        <th>Ação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {disciplinas.map(disciplina => (
+                        <tr key={disciplina.id}>
+                        <td>{disciplina.nome}</td>
+                        <td>{disciplina.curso}</td>
+                        <td>{disciplina.descricao}</td>
+                        <td>{disciplina.carga_horaria}</td>
+                        <td>{professores[disciplina.professor] || '—'}</td>
+                        <td>
+                            <button onClick={() => excluirDisciplina(disciplina.id)}>
+                            <Trash2 className="text-red-500 hover:text-red-700 w-5 h-5" />
+                            </button>
+                        </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </main>
+    );
+}
 
  // <td>
         //         {/* editar disciplina */}
@@ -168,8 +141,6 @@ export function Disciplina() {
         //         </div>
         //     </div>
         // </>
-        );
-    }
 
 
         // <main className={estilos.container}>

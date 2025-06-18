@@ -3,6 +3,7 @@ import { Inicial } from '../Paginas/Inicial';
 import { Inicio } from '../Paginas/Inicio';
 import { Login } from '../Paginas/Login';
 import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
+
 import { Disciplina } from '../Paginas/Disciplina';
 import { Ambiente } from '../Paginas/Ambiente';
 import { SobreNos } from '../Paginas/SobreNos';
@@ -15,8 +16,10 @@ export function Rotas() {
         <Route index element={<Inicio />} />
         <Route path ='login' element={<Login/>}/>
         <Route path='home' element={<Home/>} />
+        <Route path='discprofessor' element={<DisciplinasProfessor/>} />
+        <Route path='disciplina' element={<Disciplina/>} />
+
         <Route path='sobre_nos' element={<SobreNos/>} />
-        <Route path = 'disciplina' element={<Disciplina/>}/>
         <Route path = 'ambiente' element={<Ambiente/>} />
       </Route>
     </Routes>

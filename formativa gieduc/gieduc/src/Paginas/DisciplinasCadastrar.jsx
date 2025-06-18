@@ -24,7 +24,7 @@ const schemaDisciplinas = z.object({
             .min(1, 'Selecione um professor')
 });
 
-export function DisciplinaCadastrar (){
+export function DisciplinasCadastrar (){
     const [professores, setProfessores] = useState([]);
 
     const{

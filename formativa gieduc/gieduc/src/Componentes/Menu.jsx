@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 export function Menu() {
     const tipo = localStorage.getItem('tipo');
     const linkDisciplina = tipo === 'P' ? '/discprofessor' : '/disciplina';// if else
-    const LinkAmbiente = tipo == 'P' ? '/ambienteprofessor' : '/ambiente';
+    const LinkAmbiente = tipo === 'P' ? '/ambienteprofessor' : '/ambiente';
+    console.log('Tipo logado:', tipo);
 
     return (
         <div className={estilos.container}>

@@ -1,3 +1,4 @@
+/*Login*/
 .container{
     display: flex;
     justify-content: center;
@@ -88,4 +89,84 @@
 
 .infoDisc{
     background-color: #ccc;
+}
+
+/*Disciplinas Gestor*/
+.containerDisc {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.content_container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.topoAcoes {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.botaoAdicionar {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2a7ae2;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid #2a7ae2;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.botaoAdicionar:hover {
+  background-color: #2a7ae2;
+  color: white;
+}
+
+.tabelaWrapper {
+  overflow-x: auto;
+}
+
+.tabeladados {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.cabecalho th {
+  background-color: #003366;
+  color: white;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tabeladados td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.tabeladados tr:hover {
+  background-color: #f1faff;
+}
+
+.tabeladados button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
