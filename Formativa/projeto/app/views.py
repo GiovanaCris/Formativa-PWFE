@@ -160,3 +160,6 @@ class SalaretrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
 #julia
 #username: julia
 #password: Giovana1@3
+
+#adminn
+#Giovana1@3
