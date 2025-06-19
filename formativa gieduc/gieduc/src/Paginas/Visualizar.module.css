@@ -1,25 +1,25 @@
 /*Login*/
-.container{
+.container {
     display: flex;
     justify-content: center;
     height: 80vh;
 }
 
-.loginForm{
+.loginForm {
     width: 100%;
     max-width: 500px;
     height: auto;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
-.titulo{
+.titulo {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     text-align: center;
@@ -27,18 +27,18 @@
     margin-bottom: 25px;
 }
 
-.label{
+.label {
     padding: 15px;
     font-size: 5px;
-    color: rgb(80,80,79);
+    color: rgb(80, 80, 79);
     font-size: 14px;
     margin: 5px;
 }
 
-.inputField{
+.inputField {
     padding: 10px;
-    font-size:16px;
-    color: rgb(50, 50,50);
+    font-size: 16px;
+    color: rgb(50, 50, 50);
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -46,127 +46,128 @@
     margin: 5px;
 }
 
-.inputField::placeholder{
-    color:rgb(150,150,150)
+.inputField::placeholder {
+    color: rgb(150, 150, 150)
 }
 
-.submitButton{
+.submitButton {
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(251,152,60,0);
+    background-color: rgba(251, 152, 60, 0);
     font-size: 16px;
     font-weight: bold;
     padding: 12px;
     margin-top: 30px;
     border-radius: 8px;
     border: none;
-    color:#ccc;
+    color: #ccc;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.submitButton{
-    background-color: rgba(222, 155,14,0.9);
+.submitButton {
+    background-color: rgba(222, 155, 14, 0.9);
 }
 
-.error{
+.error {
     color: #dc3545;
     font-size: 13px;
     margin-top: 5px;
 }
 
-.iconeEdit{
+.iconeEdit {
     height: 40px;
 }
 
-.iconeDel{
+.iconeDel {
     height: 40px;
 }
 
-.iconeAdd{
+.iconeAdd {
     height: 40px;
 }
 
-.infoDisc{
+.infoDisc {
     background-color: #ccc;
 }
 
-/*Disciplinas Gestor*/
+/*Listagem disciplinas Gestor*/
 .containerDisc {
-  padding: 20px;
-  background-color: #f9f9f9;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 .content_container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: white;
-  padding: 15px 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  font-weight: bold;
-  font-size: 24px;
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 15px;
-  color: #222;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 15px;
+    color: #222;
 }
 
 .topoAcoes {
-  margin-bottom: 15px;
-  text-align: right;
+    margin-bottom: 15px;
+    text-align: right;
 }
 
 .botaoAdicionar {
-  display: inline-block;
-  font-size: 24px;
-  font-weight: bold;
-  color: #2a7ae2;
-  cursor: pointer;
-  text-decoration: none;
-  border: 2px solid #2a7ae2;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a7ae2;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid #2a7ae2;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .botaoAdicionar:hover {
-  background-color: #2a7ae2;
-  color: white;
+    background-color: #2a7ae2;
+    color: white;
 }
 
 .tabelaWrapper {
-  overflow-x: auto;
+    overflow-x: auto;
 }
 
 .tabeladados {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
 }
 
 .cabecalho th {
-  background-color: #003366;
-  color: white;
-  text-align: left;
-  padding: 10px 12px;
-  border-bottom: 2px solid #ddd;
+    background-color: #003366;
+    color: white;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #ddd;
 }
 
 .tabeladados td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #ddd;
-  vertical-align: middle;
+    padding: 15px 12px;
+    border-bottom: 1px solid #ddd;
 }
 
 .tabeladados tr:hover {
-  background-color: #f1faff;
+    background-color: #f1faff;
 }
 
 .tabeladados button {
-  background: none;
-  border: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
+
+/*Cadastrar disciplina*/

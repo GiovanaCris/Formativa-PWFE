@@ -1,3 +1,4 @@
+//Listagem das disciplinas para o professor logado
 import axios from 'axios'; //axios é o que permite que chamemos uma API (pagina http(s))
 import React,{useState, useEffect} from 'react'; //state guarda o estado atual da variável e o effecr mostra isso em tela
 import estilos from './Visualizar.module.css'

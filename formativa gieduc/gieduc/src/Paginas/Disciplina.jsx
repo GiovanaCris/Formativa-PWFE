@@ -1,8 +1,8 @@
+//Listagem das disciplinas
 import axios from 'axios'
 import React, { useState, useEffect } from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Brush } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import add from '../assets/add.png';
 import estilos from './Visualizar.module.css';
 
 export function Disciplina() {
@@ -35,6 +35,9 @@ export function Disciplina() {
         const confirmar = window.confirm('Tem certeza que deseja excluir esta disciplina?');
         if (!confirmar) return;
 
+        console.log("Tentando excluir disciplina com ID:", id);
+        console.log("URL da requisição DELETE:", `http://127.0.0.1:8000/api/disciplinas/${id}/`);
+
         const token = localStorage.getItem('access_token');
         axios.delete(`http://127.0.0.1:8000/api/disciplinas/${id}/`, {
             headers: { 'Authorization': `Bearer ${token}` }
@@ -55,7 +58,7 @@ export function Disciplina() {
                 <h3 className={estilos.title}>DISCIPLINAS</h3>
                 <div className={estilos.topoAcoes}>
                 <Link to="/adicionardisciplina" className={estilos.botaoAdicionar}>
-                    <span className={estilos.iconeAdd}>+</span> {/* um "+" maior e destacado */}
+                    <span className={estilos.iconeAdd}>+</span>
                 </Link>
                 </div>
                 <div className={estilos.tabelaWrapper}>
@@ -78,10 +81,15 @@ export function Disciplina() {
                         <td>{disciplina.descricao}</td>
                         <td>{disciplina.carga_horaria}</td>
                         <td>{professores[disciplina.professor] || '—'}</td>
-                        <td>
+                        <td className={estilos.atualizacoes}>
                             <button onClick={() => excluirDisciplina(disciplina.id)}>
-                            <Trash2 className="text-red-500 hover:text-red-700 w-5 h-5" />
+                                <Trash2 className={estilos.excluir} />
                             </button>
+                            <Link to={`/disciplinas/editar/${disciplina.id}`}>
+                                <button className={estilos.meuBotaoComIcone}>
+                                    <Brush className={estilos.editar} />
+                                </button>
+                            </Link>
                         </td>
                         </tr>
                     ))}

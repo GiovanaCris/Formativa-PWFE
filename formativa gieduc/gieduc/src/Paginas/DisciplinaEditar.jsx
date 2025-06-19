@@ -1,11 +1,11 @@
-//Cadastro e exlusão das disciplinas
+// Atualizar informações da disciplina
 import { useForm } from 'react-hook-form';
-import estilos from './Visualizar.module.css';
+import estilos from './Visualizar.module.css'; // Mantenha se estiver usando, mas pode ser redundante com Tailwind/classes inline
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, useParams } from 'react-router-dom'; // <-- Importe useParams aqui!
 
 const schemaDisciplinas = z.object({
     nome: z.string()
@@ -20,45 +20,45 @@ const schemaDisciplinas = z.object({
         .int("Digite um valor inteiro para a carga horária.")
         .min(1, 'Informe um valor para a carga horária.')
         .max(260, 'A carga horária máxima é 260h.'),
-    descricao: z.string() // Mesmos campos do models e o min e max dos valores também
+    descricao: z.string()
         .min(1, 'Informe a descrição.')
         .max(255, 'Informe no máximo 255 caracteres.'),
     professor: z.number({
         invalid_type_error: 'Selecione um professor.'
     })
-        .min(1, 'Selecione um professor.') 
+        .min(1, 'Selecione um professor.')
 });
 
-export function DisciplinasCadastrar() {
+export function DisciplinasEditar() {
     const [professores, setProfessores] = useState([]);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    // const [disciplinaNome, setDisciplinaNome] = useState('');
+    const { id } = useParams(); // <-- Obtém o ID da URL de edição
 
-    //formulário de cadastro
     const {
         register,
         handleSubmit,
         formState: { errors },
-        reset //Limpar os campos do formulário
+        setValue, // <-- Essencial para preencher os campos do formulário para edição
+        reset // Para limpar o formulário (pode ser usado, mas setValue é mais comum em edições)
     } = useForm({
         resolver: zodResolver(schemaDisciplinas)
     });
 
-    // useEffect para buscar a lista de professores ao carregar o componente
+    // useEffect para buscar a lista de professores (isso continua igual)
     useEffect(() => {
         async function buscarProfessores() {
             try {
                 const token = localStorage.getItem('access_token');
                 if (!token) {
                     console.error("Token de autenticação não encontrado.");
+                    navigate('/login'); // Redireciona para o login se não houver token
                     return;
                 }
-                
+
                 const response = await axios.get('http://127.0.0.1:8000/api/usuario/', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
-        
                 setProfessores(response.data);
             } catch (error) {
                 console.error("Erro ao buscar professores:", error);
@@ -66,49 +66,80 @@ export function DisciplinasCadastrar() {
             }
         }
         buscarProfessores();
-    }, []); 
+    }, [navigate]); // Adicione navigate às dependências, pois ele é usado dentro do useEffect
 
-    //Função para para o envio do formulário
+    // NOVO useEffect: Para carregar os dados da disciplina a ser editada
+    useEffect(() => {
+        // Só carrega os dados se um ID estiver presente na URL (ou seja, modo de edição)
+        if (id) {
+            async function carregarDadosDisciplina() {
+                try {
+                    const token = localStorage.getItem('access_token');
+                    if (!token) {
+                        alert("Sua sessão expirou ou você não está logado. Por favor, faça login novamente.");
+                        navigate('/login');
+                        return;
+                    }
+
+                    const response = await axios.get(`http://127.0.0.1:8000/api/disciplinas/${id}/`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    const disciplinaData = response.data;
+
+                    setValue('nome', disciplinaData.nome);
+                    setValue('curso', disciplinaData.curso);
+                    setValue('carga_horaria', disciplinaData.carga_horaria);
+                    setValue('descricao', disciplinaData.descricao);
+                    setValue('professor', disciplinaData.professor);
+
+                } catch (error) {
+                    console.error("Erro ao carregar dados da disciplina para edição:", error);
+                    alert("Não foi possível carregar os dados da disciplina para edição. Verifique o ID ou suas permissões.");
+                    navigate('/disciplinas'); // Redireciona de volta se houver erro ao carregar
+                }
+            }
+            carregarDadosDisciplina();
+        }
+    }, [id, setValue, navigate]);
+
     async function obterDadosFormulario(data) {
-        console.log("Dados do formulário:", data);
+        console.log("Dados do formulário para atualização:", data);
         try {
             const token = localStorage.getItem('access_token');
             if (!token) {
                 alert("Você não está autenticado. Por favor, faça login.");
+                navigate('/login');
                 return;
             }
 
-            // Requisição POST para cadastrar a nova disciplina
-            const response = await axios.post(
-                'http://127.0.0.1:8000/api/disciplinas/', //Endpoint da API Django para criar disciplinas
+            const response = await axios.put(
+                `http://127.0.0.1:8000/api/disciplinas/${id}/`,
                 data,
                 {
                     headers: {
-                        'Authorization': `Bearer ${token}`, 
-                        'Content-Type': 'application/json' 
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
                     }
                 }
             );
-            alert("Disciplina cadastrada com sucesso!");
-            reset(); // Limpa os campos do formulário após o sucesso
-            // Redireciona para a página de visualização de disciplinas
-            navigate('/disciplina'); 
+            alert("Disciplina atualizada com sucesso!");
+            navigate('/disciplina'); //Redireciona para a lista de disciplinas
         } catch (error) {
-            console.error("Erro ao cadastrar disciplina:", error);
+            console.error("Erro ao atualizar disciplina:", error);
             if (error.response && error.response.data) {
-                alert(`Erro ao cadastrar: ${JSON.stringify(error.response.data)}`);
+                alert(`Erro ao atualizar: ${JSON.stringify(error.response.data)}`);
             } else {
-                alert("Erro ao cadastrar disciplina. Por favor, tente novamente.");
+                alert("Erro ao atualizar disciplina. Por favor, tente novamente.");
             }
         }
     }
 
     return (
-        <div className="container_criarambiente"> 
-            <h2 className="title">Cadastrar Nova Disciplina</h2>
+        <div className={estilos.container_criarambiente}>
+            <h2 className={estilos.title}>Editar Disciplina:</h2>
             <form onSubmit={handleSubmit(obterDadosFormulario)} className="space-y-4">
                 <div>
-                    <label htmlFor="nome" className="formCriarAmbiente">Nome:</label>
+                    <label htmlFor="nome" className={estilos.formCriarAmbiente}>Nome:</label>
                     <input
                         type="text"
                         id="nome"
@@ -134,7 +165,7 @@ export function DisciplinasCadastrar() {
                     <input
                         type="number"
                         id="carga_horaria"
-                        {...register('carga_horaria', { valueAsNumber: true })} // Importante para converter o valor para número
+                        {...register('carga_horaria', { valueAsNumber: true })}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     />
                     {errors.carga_horaria && <p className="mt-1 text-sm text-red-600">{errors.carga_horaria.message}</p>}
@@ -145,7 +176,7 @@ export function DisciplinasCadastrar() {
                     <textarea
                         id="descricao"
                         {...register('descricao')}
-                        rows="3" 
+                        rows="3"
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     ></textarea>
                     {errors.descricao && <p className="mt-1 text-sm text-red-600">{errors.descricao.message}</p>}
@@ -158,7 +189,7 @@ export function DisciplinasCadastrar() {
                         {...register('professor', { valueAsNumber: true })}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     >
-                        <option value="">Selecione um professor</option> 
+                        <option value="">Selecione um professor</option>
                         {professores.map(professor => (
                             <option key={professor.id} value={professor.id}>
                                 {professor.username || professor.first_name + ' ' + professor.last_name || professor.email}
@@ -172,86 +203,9 @@ export function DisciplinasCadastrar() {
                     type="submit"
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Cadastrar Disciplina
+                    Salvar Alterações
                 </button>
             </form>
         </div>
     );
 }
-
-
-// import { useForm } from 'react-hook-form';
-// import { z } from 'zod';
-// import { zodResolver } from '@hookform/resolvers/zod';
-// import axios from 'axios';
-// import { useState, useEffect } from 'react';
-
-// const schemaDisciplinas = z.object({
-//     nome: z.string
-//         .min(1, 'informe um nome plisss')
-//         .max(100, 'informe no máximo 100 caracteres'),
-//     curso: z.string()
-//         .min(1, 'informe o curso moçoo')
-//         .max(100, 'Informe no máximo 100 caracteres'),
-//     carga_horaria: z.number(
-//         {invalid_type_error: 'Insira uma carga horaria'})
-//         .int("Digite um valor inteiro")
-//         .min(1, 'Informe um valor')
-//         .max(260, 'IA cargahoria máxima é 260h'),
-//     descricao: z.string() //Mesmos campos do models e o min e max tambem
-//         .min(1, 'Informe a descricao')
-//         .max(255, 'Informe no máximo 255 caracteres'),
-//     professor: z.number(
-//         {invalid_type_error: 'Selecione um professor'})
-//             .min(1, 'Selecione um professor')
-// });
-
-// export function DisciplinasCadastrar (){
-//     const [professores, setProfessores] = useState([]);
-
-//     const{
-//         register, 
-//         handleSubmit,
-//         formState: {errors},
-//     } = useForm ({
-//         resolver: zodResolver(schemaDisciplinas)
-//     });
-
-//     useEffect(() => {
-//         async function buscarProfessores() {
-//             try{
-//                 const token =  localStorage.getItem('access_token');
-//                 const response = await axios.get('http://127.0.0.1:8000/api/professores/',{
-//                     headers:{
-//                         'Authorization': `Bearer ${token}`
-//                     }
-//                 });
-//                 setProfessores(response.data);
-//             }catch(error){
-//                 console.error("erro", error);
-//             }
-//         }
-//         buscarProfessores();
-//     },[]);
-
-//     async function obterDadosFormulario(params) {
-//         console.log("dados do formulário", data);
-//         try{
-//             const token = localStorage.getItem('access_token');
-//             const response = await axios.post(
-//                 'http://127.0.0.1:8000/api/disciplinas/',
-//                 data,{
-//                     headers:{
-//                         'Authorization': `Bearer ${token}`,
-//                         'Content-Type': 'application/json'
-//                     }
-//                 }
-//             );
-//             alert("Disciplina cadastrada com sucesso!");
-//             resizeTo();
-//         }catch(error){
-//             console.error("erro", error)
-//             alert("Erro ao cadastrar")
-//         }
-//     }
-// }

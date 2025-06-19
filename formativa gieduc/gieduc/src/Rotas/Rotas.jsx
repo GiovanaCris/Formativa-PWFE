@@ -3,9 +3,10 @@ import { Inicial } from '../Paginas/Inicial';
 import { Inicio } from '../Paginas/Inicio';
 import { Login } from '../Paginas/Login';
 import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
-
+import { DisciplinasCadastrar } from '../Paginas/DisciplinasCadastrar';
 import { Disciplina } from '../Paginas/Disciplina';
 import { Ambiente } from '../Paginas/Ambiente';
+import { DisciplinasEditar } from '../Paginas/DisciplinaEditar';
 import { SobreNos } from '../Paginas/SobreNos';
 import { Home } from '../Paginas/Home';
 
@@ -18,7 +19,8 @@ export function Rotas() {
         <Route path='home' element={<Home/>} />
         <Route path='discprofessor' element={<DisciplinasProfessor/>} />
         <Route path='disciplina' element={<Disciplina/>} />
-
+        <Route path='/adicionardisciplina' element={<DisciplinasCadastrar/>} />
+        <Route path="/disciplinas/editar/:id" element={<DisciplinasEditar />} />
         <Route path='sobre_nos' element={<SobreNos/>} />
         <Route path = 'ambiente' element={<Ambiente/>} />
       </Route>

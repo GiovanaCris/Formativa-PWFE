@@ -11,12 +11,12 @@ urlpatterns = [
 
     #Disciplina
     path('disciplinas/', DisciplinaListCreate.as_view()), #Feito Postan
-    path('disciplinas/<int:pk>', DisciplinaRetrieveUpdateDestroy.as_view()), #Feito Postman
+    path('disciplinas/<int:pk>/', DisciplinaRetrieveUpdateDestroy.as_view()), #Feito Postman
     path('professor/disciplinas/', DisciplinaProfessorList.as_view()), #Feito Postman
 
     #Sala
     path('salalistcreate/', SalaListCreate.as_view()), #Gestor vai listar e criar a sala #Feito postman
-    path('sala/<int:pk>', SalaretrieveUpdateDestroy.as_view()), #Feito postman
+    path('sala/<int:pk>/', SalaretrieveUpdateDestroy.as_view()), #Feito postman
     path('salalist/', SalaList.as_view()), #Listar as salas para o professor
 
     #Reserva
