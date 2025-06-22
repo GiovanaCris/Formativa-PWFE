@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export function Menu() {
     const tipo = localStorage.getItem('tipo');
     const linkDisciplina = tipo === 'P' ? '/discprofessor' : '/disciplina';// if else
-    const LinkAmbiente = tipo === 'P' ? '/ambienteprofessor' : '/ambiente';
+    const linkAmbiente = tipo === 'P' ? '/ambienteprofessor' : '/ambiente';
     console.log('Tipo logado:', tipo);
 
     return (
@@ -20,9 +20,9 @@ export function Menu() {
                     <label>VER DISCIPLINAS</label>
                 </Link>
 
-                <Link to={LinkAmbiente} className={estilos.card}>
+                <Link to={linkAmbiente} className={estilos.card}>
                     <img src={ambientes} alt="Ambientes" />
-                    <label>VER AMBIENTES</label>
+                    <label>VER RESERVAS</label>
                 </Link>
 
                 <Link to="/professores" className={estilos.card}>

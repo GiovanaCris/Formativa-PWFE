@@ -36,6 +36,7 @@
 
 .icone:hover{
     background-color: rgb(193, 193, 193);
+    transition: 0.5s ease;
 }
 
 .copyright{

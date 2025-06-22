@@ -1,100 +1,18 @@
-/*Login*/
-.container {
-    display: flex;
-    justify-content: center;
-    height: 80vh;
-}
-
-.loginForm {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-}
-
-.titulo {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    text-align: center;
-    color: #122651;
-    margin-bottom: 25px;
-}
-
-.label {
-    padding: 15px;
-    font-size: 5px;
-    color: rgb(80, 80, 79);
-    font-size: 14px;
-    margin: 5px;
-}
-
-.inputField {
-    padding: 10px;
-    font-size: 16px;
-    color: rgb(50, 50, 50);
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    margin: 5px;
-}
-
-.inputField::placeholder {
-    color: rgb(150, 150, 150)
-}
-
-.submitButton {
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(251, 152, 60, 0);
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px;
-    margin-top: 30px;
-    border-radius: 8px;
-    border: none;
-    color: #ccc;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submitButton {
-    background-color: rgba(222, 155, 14, 0.9);
-}
-
-.error {
-    color: #dc3545;
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-.iconeEdit {
-    height: 40px;
-}
-
-.iconeDel {
-    height: 40px;
-}
-
-.iconeAdd {
-    height: 40px;
-}
-
-.infoDisc {
-    background-color: #ccc;
-}
-
+/*CSS DOS CRUD*/
 /*Listagem disciplinas Gestor*/
 .containerDisc {
-    padding: 20px;
-    background-color: #f9f9f9;
+    margin-top: 50px;
+    margin-bottom: 15.3%;
+}
+
+.containerDiscProf {
+    margin-top: 50px;
+    margin-bottom: 22%;
+}
+
+.containerAmb{
+    margin-top: 50px;
+    margin-bottom: 18.3%;
 }
 
 .content_container {
@@ -110,7 +28,8 @@
     font-weight: bold;
     font-size: 24px;
     font-family: 'Inter', sans-serif;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    margin-top: 15px;
     color: #222;
 }
 
@@ -123,17 +42,17 @@
     display: inline-block;
     font-size: 24px;
     font-weight: bold;
-    color: #2a7ae2;
+    color: #5A91DF;
     cursor: pointer;
     text-decoration: none;
-    border: 2px solid #2a7ae2;
+    border: 2px solid #5A91DF;
     padding: 6px 14px;
     border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .botaoAdicionar:hover {
-    background-color: #2a7ae2;
+    background-color: #5A91DF;
+    transition: 0.5s ease;
     color: white;
 }
 
@@ -170,4 +89,111 @@
     cursor: pointer;
 }
 
-/*Cadastrar disciplina*/
+/*Cadastrar e editar*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.formGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.labelform {
+    font-size: 16px;
+    font-weight: bold;
+    color: #122651;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.inputField {
+    width: 100%;
+    height: 55px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+.inputField:focus {
+    outline: 2px solid #122651;
+}
+
+.Formeditcriar {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    background-color: #8891A6;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 20px;
+    box-sizing: border-box;
+    border: 1px solid #122651;
+}
+
+.titulo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: #122651;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+
+.tituloedit {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: #122651;
+    font-weight: bold;
+    margin-top: 155px;
+    margin-bottom: 30px;
+}
+
+.inputField::placeholder {
+    color: rgb(150, 150, 150);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+}
+
+.submitButton {
+    width: 60%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #122651;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 50px;
+    border: none;
+    color: #FDFDFD;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #1D273D;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 16px;
+    margin-top: 5px;
+    font-family: 'Inter', sans-serif;
+}

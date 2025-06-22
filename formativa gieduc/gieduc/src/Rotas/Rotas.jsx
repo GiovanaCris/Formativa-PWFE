@@ -6,7 +6,10 @@ import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
 import { DisciplinasCadastrar } from '../Paginas/DisciplinasCadastrar';
 import { Disciplina } from '../Paginas/Disciplina';
 import { Ambiente } from '../Paginas/Ambiente';
+import { AmbienteProfessor } from '../Paginas/AmbienteProfessor'
+import { AmbienteCadastrar } from '../Paginas/AmbienteCadastrar'
 import { DisciplinasEditar } from '../Paginas/DisciplinaEditar';
+import { AmbienteEditar } from '../Paginas/AmbienteEdit';
 import { SobreNos } from '../Paginas/SobreNos';
 import { Home } from '../Paginas/Home';
 
@@ -21,8 +24,11 @@ export function Rotas() {
         <Route path='disciplina' element={<Disciplina/>} />
         <Route path='/adicionardisciplina' element={<DisciplinasCadastrar/>} />
         <Route path="/disciplinas/editar/:id" element={<DisciplinasEditar />} />
-        <Route path='sobre_nos' element={<SobreNos/>} />
         <Route path = 'ambiente' element={<Ambiente/>} />
+        <Route path='/adicionarreserva' element={<AmbienteCadastrar/>} />
+        <Route path="/reservas/editar/:id" element={<AmbienteEditar/>} />
+        <Route path='ambienteprofessor' element={<AmbienteProfessor/>} />
+        <Route path='sobre_nos' element={<SobreNos/>} />
       </Route>
     </Routes>
   );

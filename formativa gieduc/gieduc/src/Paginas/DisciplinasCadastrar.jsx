@@ -104,60 +104,60 @@ export function DisciplinasCadastrar() {
     }
 
     return (
-        <div className="container_criarambiente"> 
-            <h2 className="title">Cadastrar Nova Disciplina</h2>
-            <form onSubmit={handleSubmit(obterDadosFormulario)} className="space-y-4">
-                <div>
-                    <label htmlFor="nome" className="formCriarAmbiente">Nome:</label>
+        <div className={estilos.container}> 
+            <h2 className={estilos.titulo}>CADASTRAR DISCIPLINA</h2>
+            <form onSubmit={handleSubmit(obterDadosFormulario)} className={estilos.Formeditcriar}>
+                <div className={estilos.formGroup}>
                     <input
                         type="text"
+                        placeholder='Nome da disciplina:'
                         id="nome"
                         {...register('nome')}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     />
-                    {errors.nome && <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>}
+                    {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="curso" className="block text-sm font-medium text-gray-700">Curso:</label>
+                <div className={estilos.formGroup}>
                     <input
                         type="text"
+                        placeholder='Nome do curso:'
                         id="curso"
                         {...register('curso')}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField} 
                     />
-                    {errors.curso && <p className="mt-1 text-sm text-red-600">{errors.curso.message}</p>}
+                    {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="carga_horaria" className="block text-sm font-medium text-gray-700">Carga Horária:</label>
+                <div className={estilos.formGroup}>
                     <input
                         type="number"
+                        placeholder='Carga horária:'
                         id="carga_horaria"
                         {...register('carga_horaria', { valueAsNumber: true })} // Importante para converter o valor para número
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField} 
                     />
-                    {errors.carga_horaria && <p className="mt-1 text-sm text-red-600">{errors.carga_horaria.message}</p>}
+                    {errors.carga_horaria && <p className={estilos.error}>{errors.carga_horaria.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">Descrição:</label>
+                <div className={estilos.formGroup}>
                     <textarea
                         id="descricao"
+                        placeholder='Adicone uma descrição:'
                         {...register('descricao')}
                         rows="3" 
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     ></textarea>
-                    {errors.descricao && <p className="mt-1 text-sm text-red-600">{errors.descricao.message}</p>}
+                    {errors.descricao && <p className={estilos.error}>{errors.descricao.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="professor" className="block text-sm font-medium text-gray-700">Professor:</label>
+                <div className={estilos.formGroup}>
                     <select
                         id="professor"
+                        placeholder='Selecione o professor:'
                         {...register('professor', { valueAsNumber: true })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    >
+                        className={estilos.inputField}>
+
                         <option value="">Selecione um professor</option> 
                         {professores.map(professor => (
                             <option key={professor.id} value={professor.id}>
@@ -165,14 +165,13 @@ export function DisciplinasCadastrar() {
                             </option>
                         ))}
                     </select>
-                    {errors.professor && <p className="mt-1 text-sm text-red-600">{errors.professor.message}</p>}
+                    {errors.professor && <p className={estilos.error}>{errors.professor.message}</p>}
                 </div>
 
                 <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Cadastrar Disciplina
+                    className={estilos.submitButton}>
+                    CADASTRAR DISCIPLINA
                 </button>
             </form>
         </div>

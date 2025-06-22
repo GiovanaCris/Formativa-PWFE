@@ -93,7 +93,7 @@ class ReservaAmbienteListCreate(ListCreateAPIView):
         if tratativa.exists():
             raise ValidationError("Já essiste uma reserva nesta sala neste mesmo dia e período!")
         
-        serializer.save(professor=self.request.user)
+        serializer.save()
 
 class ReservaAmbienteRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = ReservaAmbiente.objects.all()

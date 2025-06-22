@@ -1,11 +1,11 @@
 // Atualizar informações da disciplina
 import { useForm } from 'react-hook-form';
-import estilos from './Visualizar.module.css'; // Mantenha se estiver usando, mas pode ser redundante com Tailwind/classes inline
+import estilos from './Visualizar.module.css'; 
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'; // <-- Importe useParams aqui!
+import { useNavigate, useParams } from 'react-router-dom'; 
 
 const schemaDisciplinas = z.object({
     nome: z.string()
@@ -32,27 +32,25 @@ const schemaDisciplinas = z.object({
 export function DisciplinasEditar() {
     const [professores, setProfessores] = useState([]);
     const navigate = useNavigate();
-    // const [disciplinaNome, setDisciplinaNome] = useState('');
-    const { id } = useParams(); // <-- Obtém o ID da URL de edição
+    const { id } = useParams();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setValue, // <-- Essencial para preencher os campos do formulário para edição
-        reset // Para limpar o formulário (pode ser usado, mas setValue é mais comum em edições)
+        setValue, 
+        reset 
     } = useForm({
         resolver: zodResolver(schemaDisciplinas)
     });
 
-    // useEffect para buscar a lista de professores (isso continua igual)
     useEffect(() => {
         async function buscarProfessores() {
             try {
                 const token = localStorage.getItem('access_token');
                 if (!token) {
                     console.error("Token de autenticação não encontrado.");
-                    navigate('/login'); // Redireciona para o login se não houver token
+                    navigate('/login'); 
                     return;
                 }
 
@@ -66,11 +64,9 @@ export function DisciplinasEditar() {
             }
         }
         buscarProfessores();
-    }, [navigate]); // Adicione navigate às dependências, pois ele é usado dentro do useEffect
+    }, [navigate]);
 
-    // NOVO useEffect: Para carregar os dados da disciplina a ser editada
     useEffect(() => {
-        // Só carrega os dados se um ID estiver presente na URL (ou seja, modo de edição)
         if (id) {
             async function carregarDadosDisciplina() {
                 try {
@@ -95,7 +91,7 @@ export function DisciplinasEditar() {
                 } catch (error) {
                     console.error("Erro ao carregar dados da disciplina para edição:", error);
                     alert("Não foi possível carregar os dados da disciplina para edição. Verifique o ID ou suas permissões.");
-                    navigate('/disciplinas'); // Redireciona de volta se houver erro ao carregar
+                    navigate('/disciplinas');
                 }
             }
             carregarDadosDisciplina();
@@ -123,7 +119,7 @@ export function DisciplinasEditar() {
                 }
             );
             alert("Disciplina atualizada com sucesso!");
-            navigate('/disciplina'); //Redireciona para a lista de disciplinas
+            navigate('/disciplina');
         } catch (error) {
             console.error("Erro ao atualizar disciplina:", error);
             if (error.response && error.response.data) {
@@ -135,59 +131,59 @@ export function DisciplinasEditar() {
     }
 
     return (
-        <div className={estilos.container_criarambiente}>
-            <h2 className={estilos.title}>Editar Disciplina:</h2>
-            <form onSubmit={handleSubmit(obterDadosFormulario)} className="space-y-4">
-                <div>
-                    <label htmlFor="nome" className={estilos.formCriarAmbiente}>Nome:</label>
+        <div className={estilos.container}>
+            <h2 className={estilos.tituloedit}>EDITAR DISCIPLINA</h2>
+            <form onSubmit={handleSubmit(obterDadosFormulario)} className={estilos.Formeditcriar}>
+                <div className={estilos.formGroup}>
+                    <label htmlFor="nome" className={estilos.labelform}>Nome:</label>
                     <input
                         type="text"
                         id="nome"
                         {...register('nome')}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     />
-                    {errors.nome && <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>}
+                    {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="curso" className="block text-sm font-medium text-gray-700">Curso:</label>
+                <div className={estilos.formGroup}>
+                    <label htmlFor="curso" className={estilos.labelform}>Curso:</label>
                     <input
                         type="text"
                         id="curso"
                         {...register('curso')}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     />
-                    {errors.curso && <p className="mt-1 text-sm text-red-600">{errors.curso.message}</p>}
+                    {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="carga_horaria" className="block text-sm font-medium text-gray-700">Carga Horária:</label>
+                <div className={estilos.formGroup}>
+                    <label htmlFor="carga_horaria" className={estilos.labelform}>Carga Horária:</label>
                     <input
                         type="number"
                         id="carga_horaria"
                         {...register('carga_horaria', { valueAsNumber: true })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     />
-                    {errors.carga_horaria && <p className="mt-1 text-sm text-red-600">{errors.carga_horaria.message}</p>}
+                    {errors.carga_horaria && <p className={estilos.error}>{errors.carga_horaria.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">Descrição:</label>
+                <div className={estilos.formGroup}>
+                    <label htmlFor="descricao" className={estilos.labelform}>Descrição:</label>
                     <textarea
                         id="descricao"
                         {...register('descricao')}
                         rows="3"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     ></textarea>
-                    {errors.descricao && <p className="mt-1 text-sm text-red-600">{errors.descricao.message}</p>}
+                    {errors.descricao && <p className={estilos.error}>{errors.descricao.message}</p>}
                 </div>
 
-                <div>
-                    <label htmlFor="professor" className="block text-sm font-medium text-gray-700">Professor:</label>
+                <div className={estilos.formGroup}>
+                    <label htmlFor="professor" className={estilos.labelform}>Professor:</label>
                     <select
                         id="professor"
                         {...register('professor', { valueAsNumber: true })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        className={estilos.inputField}
                     >
                         <option value="">Selecione um professor</option>
                         {professores.map(professor => (
@@ -196,14 +192,13 @@ export function DisciplinasEditar() {
                             </option>
                         ))}
                     </select>
-                    {errors.professor && <p className="mt-1 text-sm text-red-600">{errors.professor.message}</p>}
+                    {errors.professor && <p className={estilos.error}>{errors.professor.message}</p>}
                 </div>
 
                 <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Salvar Alterações
+                    className={estilos.submitButton}>
+                    SALVAR ALTERAÇÕES
                 </button>
             </form>
         </div>
