@@ -48,8 +48,12 @@ class ReservaSalaSerializer(serializers.ModelSerializer):
         model = Sala
         fields = '__all__'
 
-    #Validação do nome para não criar salas com o mesmo nome
     def validate_nome(self, value):
-        if Sala.objects.filter(nome__iexact=value).exists():
-            raise serializers.ValidationError("Já existe uma sala com esse nome!") 
+        # Verifica se está atualizando
+        if self.instance:
+            if self.instance.nome == value:
+                return value
+        # Verifica se já existe outra sala com esse nome
+        if Sala.objects.filter(nome=value).exists():
+            raise serializers.ValidationError("Já existe uma sala com esse nome!")
         return value

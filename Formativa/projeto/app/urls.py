@@ -16,7 +16,7 @@ urlpatterns = [
 
     #Sala
     path('salalistcreate/', SalaListCreate.as_view()), #Gestor vai listar e criar a sala #Feito postman
-    path('sala/<int:pk>/', SalaretrieveUpdateDestroy.as_view()), #Feito postman
+    path('sala/<int:pk>/', SalaretrieveUpdateDestroy.as_view(), name='sala-detail'), #Feito postman
     path('salalist/', SalaList.as_view()), #Listar as salas para o professor
 
     #Reserva

@@ -6,8 +6,12 @@ import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
 import { DisciplinasCadastrar } from '../Paginas/DisciplinasCadastrar';
 import { Disciplina } from '../Paginas/Disciplina';
 import { Ambiente } from '../Paginas/Ambiente';
-import { AmbienteProfessor } from '../Paginas/AmbienteProfessor'
-import { AmbienteCadastrar } from '../Paginas/AmbienteCadastrar'
+import { AmbienteProfessor } from '../Paginas/AmbienteProfessor';
+import { AmbienteCadastrar } from '../Paginas/AmbienteCadastrar';
+import { SalasEditar } from '../Paginas/SalasEditar';
+import { SalasProfessor } from '../Paginas/SalasProfessor';
+import { Salas } from '../Paginas/Salas';
+import { SalasCadastrar } from '../Paginas/SalasCadastrar';
 import { DisciplinasEditar } from '../Paginas/DisciplinaEditar';
 import { AmbienteEditar } from '../Paginas/AmbienteEdit';
 import { SobreNos } from '../Paginas/SobreNos';
@@ -28,6 +32,10 @@ export function Rotas() {
         <Route path='/adicionarreserva' element={<AmbienteCadastrar/>} />
         <Route path="/reservas/editar/:id" element={<AmbienteEditar/>} />
         <Route path='ambienteprofessor' element={<AmbienteProfessor/>} />
+        <Route path='salas' element={<Salas/>} />
+        <Route path='/adicionarsala' element={<SalasCadastrar/>} />
+        <Route path="/salas/editar/:id" element={<SalasEditar/>} />
+        <Route path='salasprofessor' element={<SalasProfessor/>} />
         <Route path='sobre_nos' element={<SobreNos/>} />
       </Route>
     </Routes>

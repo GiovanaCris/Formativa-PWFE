@@ -49,9 +49,9 @@ td label{
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /*Quantidade de cards que vai ter na fileira*/
+    grid-template-columns: repeat(5, 1fr); /*Quantidade de cards que vai ter na fileira*/
     gap: 100px;
-    max-width: 1600px;
+    max-width: 1900px;
 }
 
 .card {
