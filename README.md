@@ -44,6 +44,8 @@ DATABASES = {
     }
 }
 ````
+- Crie um usuário: python .\manage.py createsuperuser
+- Insira as informações necessárias
 - Seguindo o passo a passo está tudo certinho para o BackEnd, agora bora rodar esse FrontEnd 🎉
 
 # Rodando o FrontEnd ✨
