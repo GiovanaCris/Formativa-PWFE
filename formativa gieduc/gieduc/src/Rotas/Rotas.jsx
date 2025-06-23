@@ -14,6 +14,12 @@ import { Salas } from '../Paginas/Salas';
 import { SalasCadastrar } from '../Paginas/SalasCadastrar';
 import { DisciplinasEditar } from '../Paginas/DisciplinaEditar';
 import { AmbienteEditar } from '../Paginas/AmbienteEdit';
+import { Professores } from '../Paginas/Professores';
+import { ProfessoresCadastrar } from '../Paginas/ProfessoresCadastrar';
+import { ProfessoresEditar } from '../Paginas/ProfessoresEditar';
+import { GestoresCadastrar } from '../Paginas/GestoresCadastrar';
+import { Gestores } from '../Paginas/Gestores';
+import { GestoresEditar } from '../Paginas/GestoresEditar';
 import { SobreNos } from '../Paginas/SobreNos';
 import { Home } from '../Paginas/Home';
 
@@ -36,32 +42,14 @@ export function Rotas() {
         <Route path='/adicionarsala' element={<SalasCadastrar/>} />
         <Route path="/salas/editar/:id" element={<SalasEditar/>} />
         <Route path='salasprofessor' element={<SalasProfessor/>} />
+        <Route path='professores' element={<Professores/>} />
+        <Route path='/adicionarprofessor' element={<ProfessoresCadastrar/>} />
+        <Route path="/professores/editar/:id" element={<ProfessoresEditar/>} />
+        <Route path='gestores' element={<Gestores/>} />
+        <Route path='/adicionargestor' element={<GestoresCadastrar/>} />
+        <Route path="/gestores/editar/:id" element={<GestoresEditar/>} />
         <Route path='sobre_nos' element={<SobreNos/>} />
       </Route>
     </Routes>
   );
 }
-
-
-// export function Rotas() {
-//     return (
-//         <Routes>
-//             <Route path="/" element={<Login />} />
-           
-//             <Route path="/inicial" element={<Inicial />} >
-//                 <Route index element={<MenuPrincipal />} />
-//                  <Route path="disciplina" element={<Disciplina/>}/>
-//                 <Route path="ambiente" element={<Ambiente/>}/>
-//                 <Route path='professores' element={<Professores/>}/>
-//                 <Route path='ambiente/ambCadastrar' element={<AmbienteCadastrar/>}/>
-//                 <Route path="ambiente/editar/:id" element={<AmbienteEditar />} />
-//                 <Route path='disciplina/disCad' element={<DisciplinaCadastrar/>}/>
-//                 <Route path="disciplina/editar/:id" element={<DisciplinaEditar />} />
-//                 <Route path='ambienteProfessor' element={<AmbienteProfessor/>}/>
-//                 <Route path='disciplinaProfessor' element={<DisciplinaProfessor/>}/>
-//                 <Route path="professores/editar/:id" element={<ProfessorEditar />} />
-//                 <Route path='professores/profCadastrar' element={<ProfessorCadastrar/>}/>
-//             </Route>
-//         </Routes>
-//     )
-// }

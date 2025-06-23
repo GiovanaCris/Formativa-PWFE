@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginView, UsuarioListCreate, UsuarioRestrieveUpdateDestroy, ReservaAmbienteListCreate, ReservaAmbienteRetrieveUpdateDestroy, ReservaAmbienteProfessorList, DisciplinaListCreate, DisciplinaRetrieveUpdateDestroy, DisciplinaProfessorList, SalaList, SalaListCreate, SalaretrieveUpdateDestroy
+from .views import LoginView, UsuarioListCreate, UsuarioRestrieveUpdateDestroy, GestoresListView, ReservaAmbienteListCreate, ReservaAmbienteRetrieveUpdateDestroy, ReservaAmbienteProfessorList, DisciplinaListCreate, DisciplinaRetrieveUpdateDestroy, DisciplinaProfessorList, SalaList, SalaListCreate, SalaretrieveUpdateDestroy, ProfessoresListView
 
 urlpatterns = [
     #Login
@@ -8,6 +8,8 @@ urlpatterns = [
     #Usuario
     path('usuario/', UsuarioListCreate.as_view()), #Criar e listar todos os usuários #Feito postman
     path('usuario/<int:pk>/', UsuarioRestrieveUpdateDestroy.as_view()), #atualizar e deletar as informações de um usuário em específico #Feito Postman
+    path('professores/', ProfessoresListView.as_view(), name='professores-list'),
+    path('gestores/', GestoresListView.as_view(), name='gestores-list'),
 
     #Disciplina
     path('disciplinas/', DisciplinaListCreate.as_view()), #Feito Postan

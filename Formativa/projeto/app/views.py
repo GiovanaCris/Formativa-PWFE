@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, CreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .models import Usuario, Disciplina, ReservaAmbiente, Sala
 from .serializers import UsuarioSerializer, DisciplinaSerializer, ReservaAmbienteSerializer, LoginSerializer, ReservaSalaSerializer
 from .permissions import IsGestor, IsProfessor, IsDonoOuGestor
@@ -28,6 +28,17 @@ class UsuarioRestrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
             {"detail": f"Professor (a) {instance.username} deletado com suceso!"},
             status=status.HTTP_200_OK
         )
+
+#Listagem dos professores  
+class ProfessoresListView(ListAPIView):
+    queryset = Usuario.objects.filter(tipo='P')
+    serializer_class = UsuarioSerializer
+    permission_classes = [IsGestor]
+
+class GestoresListView(ListAPIView):
+    queryset = Usuario.objects.filter(tipo='G')
+    serializer_class = UsuarioSerializer
+    permission_classes = [IsGestor]
 
 class DisciplinaListCreate(ListCreateAPIView):
     queryset = Disciplina.objects.all()

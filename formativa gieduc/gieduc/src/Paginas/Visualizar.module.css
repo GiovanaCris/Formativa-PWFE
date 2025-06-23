@@ -67,7 +67,7 @@
 }
 
 .cabecalho th {
-    background-color: #003366;
+    background-color: #122651;
     color: white;
     text-align: left;
     padding: 10px 12px;
@@ -153,6 +153,16 @@
     color: #122651;
     font-weight: bold;
     margin-top: 35px;
+    margin-bottom: 30px;
+}
+
+.titulocad{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: #122651;
+    font-weight: bold;
+    margin-top: 185px;
     margin-bottom: 30px;
 }
 
