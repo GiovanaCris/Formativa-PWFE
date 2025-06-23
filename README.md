@@ -45,7 +45,7 @@ DATABASES = {
 }
 ````
 - Crie um usuário: python .\manage.py createsuperuser
-- Insira as informações necessárias (este usuário sempre será um professor para criar um gestor faça na página de admin)
+- Insira as informações necessárias (**este usuário sempre será um professor para criar um gestor faça na página de admin**)
 - Seguindo o passo a passo está tudo certinho para o BackEnd, agora bora rodar esse FrontEnd 🎉
 
 # Rodando o FrontEnd ✨
